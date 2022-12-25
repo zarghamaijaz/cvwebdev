@@ -1,0 +1,6 @@
+About			=> Summary, Education, Languages
+Contact			=> Contact details, social Links, (LinkedIn, GitHub etc)
+Technical Skills	=> HTML/CSS, JavaScript, React etc
+Additional Skills	=> Web design, Photoshop, Illustrator, Adobe Animate, 
+Experience		=> Working experience in organizations
+Projects		=> Projects with links and description

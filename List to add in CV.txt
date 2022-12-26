@@ -17,5 +17,6 @@ Technical Skills
         Pseudo classes and pseudo elements
         Transitions and animations
     JavaScript
+    Git
 
 Additional Skills	=> Web design, Photoshop, Illustrator, Adobe Animate, 

@@ -10,23 +10,23 @@
     /* Injecting global variables */
     --background-color:#fcfff6;
     --text-color:#252525;
-    --text-color-mid:#959595;
+    --text-color-mid:#757575;
     --white-color:#fff;
     --black-color:#000;
-    --primary-color:#ffd64e;
-    --link-color:#ea1e88;
+    --primary-color:#ffc44e;
+    --primary-color-light:#ffe3aa;
+    --link-color: #227C9D;
     --font-heading:'Bebas Neue', cursive;
     --font-paragraph:'Montserrat', sans-serif;
     --font-handwritten:'Dancing Script', cursive;
-
-
+    --page-shadow: 0px 0px 50px 0px #0003;
 
 
     /* Main styling */
     display: flex;
     align-items: center;
     margin: 0px;
-    padding: 25px 100px;
+    padding: 30px 100px;
     height: 100vh;
     overflow-y: scroll;
     background-color: var(--background-color);
@@ -34,16 +34,107 @@
     position: relative;
     isolation: isolate;
 }
+.body.dark-mode{
+    --background-color:#252525;
+    --text-color:#f0f0f0;
+    --text-color-mid:#b5b5b5;
+    --white-color:#000;
+    --black-color:#fff;
+    --primary-color:#19957d;
+    --primary-color-light:#64c8b4;
+    --link-color: #ffc44e;
+    --page-shadow: 0px 0px 50px 0px #0008;
+}
 .body,input,button{
     font-family: var(--font-paragraph);
 }
 
 h1,h2,h3,h4,h5,h6{
     font-family: var(--font-heading);
+    font-weight: 400;
     margin: 0px;
     letter-spacing: 2px;
 }
+.sidebar-toggle-button{
+    cursor: pointer;
+    display: flex;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 0.1rem 0.5rem;
+    border-radius: 5px;
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
+    background-color: transparent;
+    font-size: 2rem;
+}
+.theme-switcher-button{
+    cursor: pointer;
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 17px;
+    height: 50px;
+    width: 50px;
+    border-radius: 15px;
+    margin: 10px 0px;
+    background: linear-gradient(45deg, #dadada, #c5c5c5);
+    box-shadow: inset 2px 2px 5px #fff, inset -2px -2px 5px #0005, 0px 0px 10px #0003;
+    border: none;
+    transition: all 225ms;
+}
+.theme-switcher-button:hover .theme-switcher-button-tooltip{
+    display: block;
+}
+.theme-switcher-button-tooltip{
+    white-space: nowrap;
+    position: absolute;
+    bottom: calc(100% + 10px);
+    background-color: #252525;
+    color: #a5a5a5;
+    padding: 0.2rem 0.5rem;
+    border: 1px solid #a5a5a5;
+    display: none;
+}
+.theme-switcher-button-tooltip::after{
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0; 
+    height: 0; 
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    
+    border-top: 10px solid #252525;
+}
+.theme-switcher-button::after{
+    content: "";
+    pointer-events: none;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(180deg, #b5b5b5, #fff);
+    border-radius: 5px;
+    border: 2px solid #b5b5b5;
+    border-bottom-color: #b5b5b5;
+    border-top-width: 6px;
+    border-bottom-width: 6px;
+    transition: all 225ms;
+}
+.theme-switcher-button.button--active{
+    background: linear-gradient(145deg, #000000, #383838);
+    box-shadow: inset 2px 2px 5px #868686, inset -2px -2px 5px #000, 0px 0px 10px #0003;
 
+}
+.theme-switcher-button.button--active::after{
+    background: linear-gradient(0deg, var(--primary-color), var(--primary-color-light));
+    border: 2px solid var(--primary-color);
+    border-top-width: 6px;
+    border-bottom-width: 6px;
+    border-top-color: var(--primary-color);
+}
 
 
 
@@ -115,7 +206,7 @@ a.button{
     max-width: 550px;
     background-color: var(--white-color);
     color: var(--text-color);
-    box-shadow: 0px 0px 50px 0px #0003;
+    box-shadow: var(--page-shadow);
     display: flex;
 }
 
@@ -164,7 +255,7 @@ a.button{
     font-size: 1.5rem;
     font-weight: 400;
     color: var(--primary-color);
-    margin-top: 1.5em;
+    margin-top: 1em;
 }
 .summary{
     color: var(--text-color-mid);
@@ -195,7 +286,7 @@ a.button{
 }
 .contact-title{
     font-size: 1.15rem;
-    margin-top: 0.5em;
+    margin-top: 1.5em;
 }
 .contact-link{
     display: block;
@@ -225,9 +316,12 @@ a.button{
 .navigation-wrap-info-tip{
     display: none;
     font-size: 0.9rem;
+    letter-spacing: 1px;
+    word-spacing: 0.1em;
     position: absolute;
+    z-index: 99;
     width: 85%;
-    bottom: 100%;
+    top: 0%;
     left: 50%;
     transform: translateX(-50%);
     background-color: var(--text-color);
@@ -259,6 +353,8 @@ a.button{
     margin-block: 1em;
 }
 .navigation-button{
+    font-size: inherit;
+    color: inherit;
     position: relative;
     overflow: hidden;
     isolation: isolate;
@@ -269,7 +365,7 @@ a.button{
     border-radius: 5px;
     width: 100%;
     padding: 0.5em 1em;
-    margin-block: 1rem;
+    margin-block: 10px;
     transition: border-color 225ms;
 }
 .navigation-button:not(.button--active):hover{

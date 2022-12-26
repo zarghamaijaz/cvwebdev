@@ -1,12 +1,13 @@
 @media screen and (max-width: 1200px) {
     .body{
-        padding: 25px 50px;
+        padding: 30px 50px;
     }
 }
 
 @media screen and (max-width: 992px) {
     .body{
-        padding: 25px 20px;
+        padding: 30px 20px;
+        padding-top: 50px;
     }
     .body__background{
         z-index: 999;
@@ -24,5 +25,15 @@
     }
     .main{
         margin-inline: auto;
+    }
+}
+
+
+@media screen and (max-width: 573px){
+    .main-right{
+        padding-inline: 10px;
+    }
+    .navigation-wrap{
+        padding: 5px;
     }
 }

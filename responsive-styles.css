@@ -5,17 +5,25 @@
 }
 
 @media screen and (max-width: 992px) {
+    .sidebar-toggle-button, .sidebar-close-button{
+        display: flex;
+    }
     .body{
         padding: 30px 20px;
         padding-top: 50px;
     }
     .body__background{
-        z-index: 999;
+        z-index: 9999;
         width: 100%;
         max-width: 300px;
         transform: translateX(-100%);
         visibility: hidden;
         transition: transform 225ms 0ms, visibility 0ms 225ms;
+    }
+    .body__background.active{
+        transform: translateX(0%);
+        visibility: visible;
+        transition: transform 225ms 225ms, visibility 0ms 0ms;
     }
     .body__background__stripe{
         height: 100%;

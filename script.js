@@ -124,3 +124,62 @@ function toggleTheme(){
         })
     }
 }toggleTheme();
+
+
+function setSidebar(option){
+    const sideBar = document.querySelector(".body__background");
+    const overlay = document.querySelector(".body-overlay");
+    if(sideBar){
+        if(option){
+            sideBar.classList.add("active");
+            if(overlay){
+                overlay.classList.add("overlay--active");
+            }
+        }
+        else{
+            sideBar.classList.remove("active");
+            if(overlay){
+                overlay.classList.remove("overlay--active");
+            }
+        }
+    }
+}
+
+function hamburgerIconFunctionality(){
+    const button = document.querySelector(".sidebar-toggle-button");
+    if(button){
+        button.onclick = e => {
+            e.preventDefault();
+            setSidebar(true);
+        }
+    }
+}hamburgerIconFunctionality();
+
+
+
+
+
+function sidebarCloseIconFunctionality(){
+    const button = document.querySelector(".sidebar-close-button");
+    if(button){
+        button.onclick = e => {
+            e.preventDefault();
+            setSidebar(false);
+        }
+    }
+}sidebarCloseIconFunctionality();
+
+
+
+
+
+
+function overlayFunctionality(){
+    const overlay = document.querySelector(".body-overlay");
+    if(overlay){
+        overlay.onclick = e => {
+            e.preventDefault();
+            setSidebar(false);
+        }
+    }
+}overlayFunctionality();

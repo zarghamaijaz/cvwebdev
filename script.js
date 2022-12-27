@@ -1,19 +1,42 @@
-const storedOptions = localStorage.getItem("options");
-if(!storedOptions){
-    const options = {
-        isDarkMode: false,
-        isHelpEnabled: true,
-        isNoteEnabled: true
-    }
+function getOptions(){
+    const options = JSON.parse(localStorage.getItem("options"));
+    return options;
+}
+function setOptions(options){
     localStorage.setItem("options", JSON.stringify(options));
+}
+
+const InitialOptions = {
+    isDarkMode: true,
+    isHelpEnabled: true,
+    isNoteEnabled: true,
+    isSkillSectionHelpEnabled:true
+}
+
+const storedOptions = getOptions();
+if(!storedOptions){
+    const options = InitialOptions;
+    setOptions(options);
 
 }
+
+function resetChoicesFunctionality(){
+    const button = document.querySelector(".reset-choices");
+    if(button){
+        button.onclick = e => {
+            e.preventDefault();
+            const options = InitialOptions;
+            setOptions(options);
+            window.location.reload();
+        }
+    }
+}resetChoicesFunctionality();
 
 function toggleHelp(){
     const tooltips = document.querySelectorAll(".navigation-wrap-info-tip");
     if(tooltips.length){
         tooltips.forEach(tooltip=>{
-            const options = JSON.parse(localStorage.getItem("options"));
+            const options = getOptions();
             if(options.isHelpEnabled){
                 tooltip.style.display = "block";
             }
@@ -21,11 +44,12 @@ function toggleHelp(){
             if(button){
                 button.onclick = e => {
                     e.preventDefault();
+                    const options = getOptions();
                     const isEnabled = tooltip.style.display === "none" ? false : true;
                     const isSaveToLocalStorage = tooltip.querySelector("input[type='checkbox']").checked;
                     if(isSaveToLocalStorage){
                         options.isHelpEnabled = false;
-                        localStorage.setItem("options", JSON.stringify(options));
+                        setOptions(options);
                     }
 
                     if(isEnabled){
@@ -40,6 +64,51 @@ function toggleHelp(){
     }
 }toggleHelp();
 
+function skillsHelpFunctionality(){
+    const skillsSectionHelpWraps = document.querySelectorAll(".skills-section-help-wrap");
+    const options = getOptions();
+    if(skillsSectionHelpWraps.length){
+        skillsSectionHelpWraps.forEach(skillsSectionHelpWrap=>{
+            if(options.isSkillSectionHelpEnabled){
+                skillsSectionHelpWrap.style.display = "grid";
+            }
+            const button = skillsSectionHelpWrap.querySelector("form button");
+            if(button){
+                button.onclick = e => {
+                    e.preventDefault();
+                    skillsSectionHelpWraps.forEach(item=>item.style.display = "none");
+                    const isSaveToLocalStorage = skillsSectionHelpWrap.querySelector("form .checkbox-wrap input[type='checkbox']").checked;
+                    if(isSaveToLocalStorage){
+                        const options = getOptions();
+                        options.isSkillSectionHelpEnabled = false;
+                        setOptions(options);
+                    }
+                }
+            }
+        })
+    }
+
+}skillsHelpFunctionality();
+
+
+function openFirstExpandable(section){
+    const expandables = section.querySelectorAll(".expandable");
+    if(expandables.length){
+        let isFirstTime = false;
+        expandables.forEach(expandable=>{
+            if(expandable.style.maxHeight === ""){
+                isFirstTime = true;
+            }
+        });
+        if(isFirstTime){
+            setTimeout(()=>{
+                const expandable = section.querySelector(".expandable");
+                const height = expandable.scrollHeight;
+                expandable.style.maxHeight = `${height}px`;
+            })
+        }
+    }
+}
 
 function toggleNavigation(){
     const navigationWrap = document.querySelector(".navigation-wrap");
@@ -81,6 +150,7 @@ function toggleNavigation(){
                         const sectionToEnable = document.querySelector(`#${section}`);
                         if(sectionToEnable){
                             closePreviousSections();
+                            openFirstExpandable(sectionToEnable);
                             sectionToEnable.style.display = "block";
                         }
                     }
@@ -93,7 +163,7 @@ function toggleNavigation(){
 
 function toggleTheme(){
     const buttons = document.querySelectorAll(".theme-switcher-button");
-    const options = JSON.parse(localStorage.getItem("options"));
+    const options = getOptions();
     const { isDarkMode } = options;
     if(isDarkMode){
         document.body.classList.add("dark-mode");
@@ -109,6 +179,7 @@ function toggleTheme(){
             button.onclick = e => {
                 e.preventDefault();
                 const isDarkMode = document.body.classList.contains("dark-mode");
+                const options = getOptions();
                 if(isDarkMode){
                     document.body.classList.remove("dark-mode");
                     button.classList.remove("button--active");
@@ -119,7 +190,7 @@ function toggleTheme(){
                     button.classList.add("button--active");
                     options.isDarkMode = true;
                 }
-                localStorage.setItem("options", JSON.stringify(options));
+                setOptions(options);
             }
         })
     }
@@ -183,3 +254,29 @@ function overlayFunctionality(){
         }
     }
 }overlayFunctionality();
+
+
+function expandableFunctionality(){
+    const sections = document.querySelectorAll(".section");
+    if(sections){
+        sections.forEach(section=>{
+            const buttons = section.querySelectorAll(".expandable-button");
+            if(buttons.length){
+                buttons.forEach(button=>{
+                    button.onclick = e => {
+                        e.preventDefault();
+                        const expandable = button.parentElement.querySelector(".expandable");
+                        if(expandable){
+                            const scrollables = section.querySelectorAll(".expandable");
+                            if(scrollables.length){
+                                scrollables.forEach(scrollable=>scrollable.style.maxHeight = "0px");
+                            }
+                            const height = expandable.scrollHeight;
+                            expandable.style.maxHeight = `${height}px`;
+                        }
+                    }
+                })
+            }
+        })
+    }
+}expandableFunctionality()

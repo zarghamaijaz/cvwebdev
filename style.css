@@ -349,6 +349,7 @@ a.button{
     border-radius: 5px;
 }
 .navigation-wrap-info-tip button{
+    cursor: pointer;
     display: block;
     margin-inline: auto;
     font-size: inherit;
@@ -415,4 +416,106 @@ a.button{
     height: 15px;
     width: 15px;
     margin: 0px;
+}
+.expandable-wrap{
+
+}
+.expandable{
+    padding-left: 0.85rem;
+    max-height: 0px;
+    transition: max-height 325ms;
+    overflow: hidden;
+}
+.expandable-button{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0.3rem 0.5rem;
+    background-color: transparent;
+    border: 2px solid transparent;
+    border-radius: 3px;
+    transition: border-color 225ms;
+}
+.expandable-button:hover{
+    border-color: var(--primary-color);
+    cursor: pointer;
+}
+.expandable-button i{
+    color: var(--text-color);
+    font-size: 1.65rem;
+    transition: transform 225ms;
+}
+.expandable-button.button--active i{
+    transform: rotateZ(180deg);
+}
+
+.skills-section{
+    position: relative;
+}
+.skills-section-help-wrap{
+    padding: 15px;
+    position: absolute;
+    z-index: 99;
+    inset: 0px;
+    display: none;
+    place-items: center;
+    outline: 2px solid var(--primary-color);
+    backdrop-filter: blur(2px);
+    outline-offset: 5px;
+}
+.skills-section-help{
+    position: relative;
+    color: var(--white-color);
+    background-color: var(--black-color);
+    letter-spacing: 1px;
+    padding: 0.5rem 0.8rem;
+    border: 1px solid #b5b5b5;
+    border-radius: 5px;
+}
+.skills-section-help::after{
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid var(--black-color);
+}
+.skills-section-help p{
+    margin: 0.5em 0px;
+}
+.skills-section-help form button{
+    cursor: pointer;
+    font-size: inherit;
+    display: block;
+    margin: 0.5rem auto;
+}
+
+.skill-title{
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+.subskill-title{
+    font-size: 1.25rem;
+    margin-top: 1rem;
+}
+
+.skill-description{
+    font-size: 1rem;
+    color: var(--text-color-mid);
+}
+
+.reset-choices{
+    display: block;
+    margin: 0.5rem auto;
+    color: var(--text-color);
+    background-color: transparent;
+    text-decoration: underline;
+    cursor: pointer;
+    border: none;
 }

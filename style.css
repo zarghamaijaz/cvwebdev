@@ -502,12 +502,23 @@ a.button{
 }
 .subskill-title{
     font-size: 1.25rem;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
 }
 
 .skill-description{
     font-size: 1rem;
     color: var(--text-color-mid);
+    margin: 0px;
+    margin-top: 0.2rem;
+}
+.skill-list{
+    font-size: inherit;
+    padding: 0px;
+    list-style-position: inside;
+    color: var(--text-color-mid);
+    line-height: 1.5rem;
+    margin: 0px;
+    margin-top: 0.5rem;
 }
 
 .reset-choices{

@@ -241,6 +241,31 @@ a.button{
     overflow-x: hidden;
     padding: 25px;
 }
+
+/* scrollbar styling */
+.main-left,
+.main-right,
+.message-wrap__messages{
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) var(--background-color);
+}
+.main-left::-webkit-scrollbar,
+.message-wrap__messages::-webkit-scrollbar,
+.main-right::-webkit-scrollbar{
+    width: 10px;
+}
+.main-left::-webkit-scrollbar-track,
+.message-wrap__messages::-webkit-scrollbar-track,
+.main-right::-webkit-scrollbar-track{
+    background-color: var(--background-color);
+}
+.main-left::-webkit-scrollbar-thumb,
+.message-wrap__messages::-webkit-scrollbar-thumb,
+.main-right::-webkit-scrollbar-thumb{
+    background-color: var(--primary-color);
+}
+
+
 .user-image-wrap{
     position: relative;
     isolation: isolate;
@@ -529,4 +554,59 @@ a.button{
     text-decoration: underline;
     cursor: pointer;
     border: none;
+}
+
+
+
+.message-wrap{
+    position: fixed;
+    z-index: 99999;
+    bottom: 0px;
+    right: 20px;
+    width: 300px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    box-shadow: 0px 0px 10px #0005;
+    border-radius: 5px 5px 0px 0px;
+    padding: 0.2rem;
+}
+.sender-wrap{
+    padding-block: 0.5rem;
+    color: inherit;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+}
+.sender-wrap .dropdown-indicator{
+    margin-left: auto;
+}
+.sender-image{
+    height: 35px;
+    width: 35px;
+    object-fit: contain;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+}
+.message-wrap__messages{
+    display: none;
+    font-size: 1.25rem;
+}
+.message-wrap__messages.shown{
+    display: block;
+    padding: 1rem;
+    height: 40vh;
+    overflow-y: auto;
+}
+.message-wrap__message{
+    width: fit-content;
+    max-width: 80%;
+    padding: 0.5rem 1rem;
+    margin-block: 1rem;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    color: var(--text-color);
 }

@@ -103,8 +103,14 @@ function openFirstExpandable(section){
         if(isFirstTime){
             setTimeout(()=>{
                 const expandable = section.querySelector(".expandable");
-                const height = expandable.scrollHeight;
-                expandable.style.maxHeight = `${height}px`;
+                if(expandable){
+                    const height = expandable.scrollHeight;
+                    expandable.style.maxHeight = `${height}px`;
+                    const button = section.querySelector(".expandable-button");
+                    if(button){
+                        button.classList.add("button--active");
+                    }
+                }
             })
         }
     }
@@ -267,12 +273,14 @@ function expandableFunctionality(){
                         e.preventDefault();
                         const expandable = button.parentElement.querySelector(".expandable");
                         if(expandable){
+                            buttons.forEach(button=>button.classList.remove("button--active"));
                             const scrollables = section.querySelectorAll(".expandable");
                             if(scrollables.length){
                                 scrollables.forEach(scrollable=>scrollable.style.maxHeight = "0px");
                             }
                             const height = expandable.scrollHeight;
                             expandable.style.maxHeight = `${height}px`;
+                            button.classList.add("button--active");
                         }
                     }
                 })

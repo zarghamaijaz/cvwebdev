@@ -38,9 +38,7 @@
     <main class="main">
         <div class="main-left">
             <div class="user-image-wrap">
-                <img 
-                 
-                class="user-image" src="./assets/images/zargham.webp"/>
+                <img class="user-image" src="./assets/images/zargham.webp"/>
             </div>
             <div class="navigation-wrap">
                 <div class="navigation-wrap-info-tip">
@@ -218,10 +216,14 @@
                         <i class="zmdi zmdi-chevron-down"></i>
                     </button>
                     <div class="expandable">
-                        <h4 class="subskill-title">Nesting</h4>
-                        <h4 class="subskill-title">Variables</h4>
-                        <h4 class="subskill-title">Functions</h4>
-                        <h4 class="subskill-title">Mixins</h4>
+                        <p class="skill-description">Both SAAS and SCSS are the same the only difference is that SCSS follows CSS like syntax therefore I personally prefer using it over SAAS.</p>
+                        <p class="skill-description">I have worked on the following in SCSS:</p>
+                        <ul class="skill-list">
+                            <li>Nesting</li>
+                            <li>Variables</li>
+                            <li>Functions</li>
+                            <li>Mixins</li>
+                        </ul>
                     </div>
                 </div>
 
@@ -245,6 +247,7 @@
                             <li>This keyword & its binding</li>
                             <li>Scoping</li>
                             <li>DOM maipulation</li>
+                            <li>Event handling</li>
                         </ul>
                         <h4 class="subskill-title">Advanced</h4>
                         <p class="skill-description">I aslo have a clear understanding of the following concepts:</p>
@@ -286,6 +289,8 @@
                         <p class="skill-description">Although class components are old and officially deprecated, some older apps are still using them hence I am comfortable with working with class components as well.</p>
                         <h4 class="subskill-title">Lifecycle methods</h4>
                         <p class="skill-description">When working in class components, I use lifecycly methods to manage application's state, API calls, etc.</p>
+                        <h4 class="subskill-title">Styled components</h4>
+                        <p class="skill-description">I have experience working with styled components.</p>
                     </div>
                 </div>
 
@@ -297,8 +302,11 @@
                     </button>
                     <div class="expandable">
                         <h4 class="subskill-title">Redux persist</h4>
+                        <p class="skill-description">I have used redux persist to save application's state to local storage so whenever page reloads, the application state is preserved.</p>
                         <h4 class="subskill-title">Redux reselect</h4>
+                        <p class="skill-description">I have used reselect to optimize react application and prevent unnecessary renders in a component whenever an action gets fired that is not related to that component.</p>
                         <h4 class="subskill-title">Redux saga</h4>
+                        <p class="skill-description">I have used redux sage to obtain asynchronous behavior from redux.</p>
                     </div>
                 </div>
 
@@ -447,5 +455,18 @@
             </section>
         </div>
     </main>
+    <div class="message-wrap">
+        <button class="sender-wrap">
+            <img src="./assets/images/zargham.webp" class="sender-image" alt="">
+            <span class="sender-name">Zargham Aijaz</span>
+            <i class="zmdi zmdi-chevron-up dropdown-indicator"></i>
+        </button>
+        <div class="message-wrap__messages shown">
+            <div class="message-wrap__message">Hello</div>
+            <div class="message-wrap__message">This is an automated message</div>
+            <div class="message-wrap__message">Just wanted to let you know that project links might be broken because heroku recently changed their policy.</div>
+            <div class="message-wrap__message">They are no longer giving free hosting and my most of my apps are broken. 😭</div>
+        </div>
+    </div>
 </body>
 </html>

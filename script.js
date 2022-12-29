@@ -287,4 +287,37 @@ function expandableFunctionality(){
             }
         })
     }
-}expandableFunctionality()
+}expandableFunctionality();
+
+function toggleMessageExpand(option){
+    const messageExpandable = document.querySelector(".message-expandable");
+    if(messageExpandable){
+        const button = messageExpandable.parentElement.querySelector(".sender-wrap");
+        if(option){
+            const height = messageExpandable.scrollHeight;
+            messageExpandable.style.maxHeight = `${height}px`;
+            if(button){
+                button.classList.add("button--active");
+            }
+        }
+        else{
+            messageExpandable.style.maxHeight = `0px`;
+            if(button){
+                button.classList.remove("button--active");
+            }
+        }
+    }
+}
+function messageExpandHandler(){
+    const button = document.querySelector(".sender-wrap");
+    if(button){
+        button.onclick = e => {
+            e.preventDefault();
+            const expandable = button.parentElement.querySelector(".message-expandable");
+            if(expandable){
+                const isActive = expandable.clientHeight === 0 ? false : true;
+                toggleMessageExpand(!isActive);
+            }
+        }
+    }
+}messageExpandHandler();

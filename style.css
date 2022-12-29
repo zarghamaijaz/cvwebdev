@@ -639,11 +639,12 @@ a.button{
     font-size: 1.15rem;
     display: block;
     padding: 1rem;
-    max-height: 40vh;
+    height: 40vh;
     overflow-y: auto;
 }
 
 .message-wrap__message{
+    word-break: break-word;
     width: fit-content;
     max-width: 80%;
     padding: 0.5rem 1rem;
@@ -651,6 +652,11 @@ a.button{
     border-radius: 5px;
     background-color: var(--primary-color);
     color: var(--text-color);
+}
+.message-wrap__message.is-own{
+    margin-left: auto;
+    background-color: var(--link-color);
+    color: var(--white-color);
 }
 
 .message-wrap__message.typing{
@@ -752,4 +758,30 @@ a.button{
     max-height: 0px;
     overflow: hidden;
     transition: max-height 225ms;
+}
+
+.message-wrap__replies{
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.message-wrap__reply{
+    cursor: pointer;
+    background-color: transparent;
+    color: var(--text-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    padding: 5px;
+}
+.message-wrap__input-wrap{
+    padding: 10px;
+}
+.message-wrap__input-wrap input{
+    background-color: transparent;
+    display: block;
+    width: 100%;
+    border: 1px solid var(--text-color-mid);
+    padding: 0.5em;
+    color: var(--text-color-mid);
 }

@@ -321,3 +321,152 @@ function messageExpandHandler(){
         }
     }
 }messageExpandHandler();
+let lastReply = "";
+function getReply(message){
+    const replies = {
+        "where can i see projects?": "I am moving the apps to another platform. Once it is done, the links will be updated here.",
+        "how can i download cv?": "Here's a link to download the CV as a PDF.\n <a href='https://something.com' >https://something.com</a>",
+        "are you actually zargham?": "No i am just an intelligent program developed by him. I am here to help you with your questions.",
+        "how's the weather?": "My CPU is getting a bit warmer.",
+        "how's the weather": "My CPU is getting a bit warmer.",
+        "how is the weather?": "My CPU is getting a bit warmer.",
+        "how is the weather": "My CPU is getting a bit warmer.",
+
+        "are you real": "Is anything real?",
+        "are you real?": "Is anything real?",
+
+        "are you a human":"No I am a program.",
+        "are you a human?":"No I am a program.",
+
+        "are you human":"No I am a program.",
+        "are you human?":"No I am a program.",
+
+        "are you a real human":"No I am a real program.",
+        "are you a real human?":"No I am a real program.",
+
+        "are you real human":"No I am a real program.",
+        "are you real human?":"No I am a real program.",
+
+        "are you a real person":"No I am a real program.",
+        "are you a real person?":"No I am a real program.",
+
+        "are you real person":"No I am a real program.",
+        "are you real person?":"No I am a real program.",
+
+        "are you a program":"Yes I am.",
+        "are you a program?":"Yes I am.",
+        "are you a robot":"Yes sort of.",
+        "are you a robot?":"Yes sort of.",
+
+        "hey":"Hey there! how can I help you?",
+        "hey there":"Hey there! how can I help you?",
+
+        "hehe":"hehehehehe",
+        "heheh":"hehehehehe",
+        "hehehe":"hehehehehe",
+        "hehehehe":"hehehehehe",
+        "haha":"hahahaha",
+        "hahah":"hahahaha",
+        "hahaha":"hahahaha",
+        "hahahaha":"hahahaha",
+
+        "hello":"Hello how can I help you?",
+        "how are you":"I'm good thank you :)",
+        "how are you?":"I'm good thank you :)",
+        "ok": "Great. Anything else I can do for you?",
+        "cool":"Thanks",
+        "great":"Thanks",
+        "good":"Thanks",
+        "yes": "What would you like to know",
+        "no": "Thanks. It was great talking to you.",
+    }
+    const reply = replies[message.toLowerCase()];
+    const messageWrap = document.querySelector(".message-wrap__messages");
+    if(messageWrap){
+        if(reply){
+            if(reply === lastReply){
+                const typing = document.createElement("div");
+                typing.className = "message-wrap__message typing";
+                typing.innerHTML = "<div></div><div></div><div></div>"
+                messageWrap.appendChild(typing);
+                messageWrap.scrollTo({left:0, top:messageWrap.scrollHeight, behavior:"smooth" });
+                setTimeout(()=>{
+                    messageWrap.lastChild.remove();
+                    const messageNode = document.createElement("div");
+                    messageNode.className = "message-wrap__message";
+                    messageNode.innerHTML = "Hey haven't I just answered that?";
+                    messageWrap.appendChild(messageNode);
+                    messageWrap.scrollTo({left:0, top:messageWrap.scrollHeight, behavior:"smooth" });
+                },2000)
+            }
+            else{
+                lastReply = reply;
+                const typing = document.createElement("div");
+                typing.className = "message-wrap__message typing";
+                typing.innerHTML = "<div></div><div></div><div></div>"
+                messageWrap.appendChild(typing);
+                messageWrap.scrollTo({left:0, top:messageWrap.scrollHeight, behavior:"smooth" });
+                setTimeout(()=>{
+                    messageWrap.lastChild.remove();
+                    const messageNode = document.createElement("div");
+                    messageNode.className = "message-wrap__message";
+                    messageNode.innerHTML = reply;
+                    messageWrap.appendChild(messageNode);
+                    messageWrap.scrollTo({left:0, top:messageWrap.scrollHeight, behavior:"smooth" });
+                },2000)
+            }
+        }
+        else{
+            const typing = document.createElement("div");
+            typing.className = "message-wrap__message typing";
+            typing.innerHTML = "<div></div><div></div><div></div>"
+            messageWrap.appendChild(typing);
+            setTimeout(()=>{
+                messageWrap.lastChild.remove();
+                const messageNode = document.createElement("div");
+                messageNode.className = "message-wrap__message";
+                messageNode.innerHTML = "Sorry I couldn't understand that.";
+                messageWrap.appendChild(messageNode);
+                messageWrap.scrollTo({left:0, top:messageWrap.scrollHeight, behavior:"smooth" });
+            },2000)
+        }
+    }
+}
+
+function sendMessage(text){
+    const messageWrap = document.querySelector(".message-wrap__messages");
+    if(messageWrap){
+        const messageNode = document.createElement("div");
+        messageNode.className = "message-wrap__message is-own";
+        messageNode.innerText = text;
+        messageWrap.appendChild(messageNode);
+        messageWrap.scrollTo({left:0, top:messageWrap.scrollHeight, behavior:"smooth" });
+        getReply(text);
+    }
+}
+
+
+function sendMessageHandler(){
+    const form = document.querySelector(".message-wrap__replies");
+    if(form){
+        form.onsubmit = e => {
+            e.preventDefault();
+            console.log(e)
+            sendMessage(e.submitter.innerText)
+        }
+    }
+}sendMessageHandler();
+
+function sendMessageInputHandler(){
+    const form = document.querySelector(".message-wrap__input-wrap");
+    if(form){
+        form.onsubmit = e => {
+            e.preventDefault();
+            const input = e.target.querySelector("input[type='text']");
+            if(input){
+                sendMessage(input.value);
+                input.value = ""
+            }
+        }
+    }
+}sendMessageInputHandler();

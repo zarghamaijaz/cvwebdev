@@ -761,7 +761,7 @@ a.button{
 }
 
 .message-wrap__replies{
-    padding: 10px;
+    padding: 0px 10px;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
@@ -782,6 +782,7 @@ a.button{
     display: block;
     width: 100%;
     border: 1px solid var(--text-color-mid);
+    border-radius: 5px;
     padding: 0.5em;
     color: var(--text-color-mid);
 }

@@ -321,137 +321,8 @@ function messageExpandHandler(){
         }
     }
 }messageExpandHandler();
-let lastReply = "";
 
 
-const chatQuestions = {
-    "where can i see your projects?": "I am moving the apps to another platform. Once it is done, the links will be updated here.",
-    "where can i see your projects": "I am moving the apps to another platform. Once it is done, the links will be updated here.",
-    "where to see your projects?": "I am moving the apps to another platform. Once it is done, the links will be updated here.",
-    "where to see your projects": "I am moving the apps to another platform. Once it is done, the links will be updated here.",
-
-    "where to download cv?": "Here's a link to download the CV as a PDF.\n <a target='_blank' href='https://something.com' >https://something.com</a>",
-    "where to download cv": "Here's a link to download the CV as a PDF.\n <a target='_blank' href='https://something.com' >https://something.com</a>",
-    "where to download your cv?": "Here's a link to download the CV as a PDF.\n <a target='_blank' href='https://something.com' >https://something.com</a>",
-    "where to download your cv": "Here's a link to download the CV as a PDF.\n <a target='_blank' href='https://something.com' >https://something.com</a>",
-
-    "where can i contact you?": "You can contact me on the following.<br/> Phone: <a href='tel:03174429967' >03174429967</a> <br/> Phone 2: <a href='tel:03238404499' >03238404499</a> <br/> Email: <a href='mailto:zarghamaijaz45@gmail.com' >zarghamaijaz45@gmail.com</a>",
-    "where can i contact you": "You can contact me on the following.<br/> Phone: <a href='tel:03174429967' >03174429967</a> <br/> Phone 2: <a href='tel:03238404499' >03238404499</a> <br/> Email: <a href='mailto:zarghamaijaz45@gmail.com' >zarghamaijaz45@gmail.com</a>",
-    "where to contact you?": "You can contact me on the following.<br/> Phone: <a href='tel:03174429967' >03174429967</a> <br/> Phone 2: <a href='tel:03238404499' >03238404499</a> <br/> Email: <a href='mailto:zarghamaijaz45@gmail.com' >zarghamaijaz45@gmail.com</a>",
-    "where to contact you": "You can contact me on the following.<br/> Phone: <a href='tel:03174429967' >03174429967</a> <br/> Phone 2: <a href='tel:03238404499' >03238404499</a> <br/> Email: <a href='mailto:zarghamaijaz45@gmail.com' >zarghamaijaz45@gmail.com</a>",
-
-    "how can i contact you?": "You can contact me on the following.<br/> Phone: <a href='tel:03174429967' >03174429967</a> <br/> Phone 2: <a href='tel:03238404499' >03238404499</a> <br/> Email: <a href='mailto:zarghamaijaz45@gmail.com' >zarghamaijaz45@gmail.com</a>",
-    "how can i contact you": "You can contact me on the following.<br/> Phone: <a href='tel:03174429967' >03174429967</a> <br/> Phone 2: <a href='tel:03238404499' >03238404499</a> <br/> Email: <a href='mailto:zarghamaijaz45@gmail.com' >zarghamaijaz45@gmail.com</a>",
-    "how to contact you?": "You can contact me on the following.<br/> Phone: <a href='tel:03174429967' >03174429967</a> <br/> Phone 2: <a href='tel:03238404499' >03238404499</a> <br/> Email: <a href='mailto:zarghamaijaz45@gmail.com' >zarghamaijaz45@gmail.com</a>",
-    "how to contact you": "You can contact me on the following.<br/> Phone: <a href='tel:03174429967' >03174429967</a> <br/> Phone 2: <a href='tel:03238404499' >03238404499</a> <br/> Email: <a href='mailto:zarghamaijaz45@gmail.com' >zarghamaijaz45@gmail.com</a>",
-
-    "what are your contact details?": "You can contact me on the following.<br/> Phone: <a href='tel:03174429967' >03174429967</a> <br/> Phone 2: <a href='tel:03238404499' >03238404499</a> <br/> Email: <a href='mailto:zarghamaijaz45@gmail.com' >zarghamaijaz45@gmail.com</a>",
-    "what are your contact details": "You can contact me on the following.<br/> Phone: <a href='tel:03174429967' >03174429967</a> <br/> Phone 2: <a href='tel:03238404499' >03238404499</a> <br/> Email: <a href='mailto:zarghamaijaz45@gmail.com' >zarghamaijaz45@gmail.com</a>",
-    "can you share your contact?": "You can contact me on the following.<br/> Phone: <a href='tel:03174429967' >03174429967</a> <br/> Phone 2: <a href='tel:03238404499' >03238404499</a> <br/> Email: <a href='mailto:zarghamaijaz45@gmail.com' >zarghamaijaz45@gmail.com</a>",
-    "can you share your contact": "You can contact me on the following.<br/> Phone: <a href='tel:03174429967' >03174429967</a> <br/> Phone 2: <a href='tel:03238404499' >03238404499</a> <br/> Email: <a href='mailto:zarghamaijaz45@gmail.com' >zarghamaijaz45@gmail.com</a>",
-    "can you share your contact details?": "You can contact me on the following.<br/> Phone: <a href='tel:03174429967' >03174429967</a> <br/> Phone 2: <a href='tel:03238404499' >03238404499</a> <br/> Email: <a href='mailto:zarghamaijaz45@gmail.com' >zarghamaijaz45@gmail.com</a>",
-    "can you share your contact details": "You can contact me on the following.<br/> Phone: <a href='tel:03174429967' >03174429967</a> <br/> Phone 2: <a href='tel:03238404499' >03238404499</a> <br/> Email: <a href='mailto:zarghamaijaz45@gmail.com' >zarghamaijaz45@gmail.com</a>",
-
-    "share your contact": "You can contact me on the following.<br/> Phone: <a href='tel:03174429967' >03174429967</a> <br/> Phone 2: <a href='tel:03238404499' >03238404499</a> <br/> Email: <a href='mailto:zarghamaijaz45@gmail.com' >zarghamaijaz45@gmail.com</a>",
-    "share your contact details": "You can contact me on the following.<br/> Phone: <a href='tel:03174429967' >03174429967</a> <br/> Phone 2: <a href='tel:03238404499' >03238404499</a> <br/> Email: <a href='mailto:zarghamaijaz45@gmail.com' >zarghamaijaz45@gmail.com</a>",
-    "please share your contact": "You can contact me on the following.<br/> Phone: <a href='tel:03174429967' >03174429967</a> <br/> Phone 2: <a href='tel:03238404499' >03238404499</a> <br/> Email: <a href='mailto:zarghamaijaz45@gmail.com' >zarghamaijaz45@gmail.com</a>",
-    "please share your contact details": "You can contact me on the following.<br/> Phone: <a href='tel:03174429967' >03174429967</a> <br/> Phone 2: <a href='tel:03238404499' >03238404499</a> <br/> Email: <a href='mailto:zarghamaijaz45@gmail.com' >zarghamaijaz45@gmail.com</a>",
-    "kindly share your contact": "You can contact me on the following.<br/> Phone: <a href='tel:03174429967' >03174429967</a> <br/> Phone 2: <a href='tel:03238404499' >03238404499</a> <br/> Email: <a href='mailto:zarghamaijaz45@gmail.com' >zarghamaijaz45@gmail.com</a>",
-    "kindly share your contact details": "You can contact me on the following.<br/> Phone: <a href='tel:03174429967' >03174429967</a> <br/> Phone 2: <a href='tel:03238404499' >03238404499</a> <br/> Email: <a href='mailto:zarghamaijaz45@gmail.com' >zarghamaijaz45@gmail.com</a>",
-
-    "are you actually zargham?": "No i am just an intelligent program developed by him. I am here to help you with your questions.",
-    "are you actually zargham": "No i am just an intelligent program developed by him. I am here to help you with your questions.",
-    "are you zargham": "You can say that.",
-    "are you zargham?": "You can say that.",
-
-    "what's your name":"Zargham Aijaz",
-    "what's your name?":"Zargham Aijaz",
-    "what is your name":"Zargham Aijaz",
-    "what is your name?":"Zargham Aijaz",
-
-    "how's the weather?": "My CPU is getting a bit warmer.",
-    "how's the weather": "My CPU is getting a bit warmer.",
-    "how is the weather?": "My CPU is getting a bit warmer.",
-    "how is the weather": "My CPU is getting a bit warmer.",
-
-    "are you real": "Is anything real?",
-    "are you real?": "Is anything real?",
-
-    "are you a human":"No I am a program.",
-    "are you a human?":"No I am a program.",
-
-    "are you human":"No I am a program.",
-    "are you human?":"No I am a program.",
-
-    "are you a real human":"No I am a real program.",
-    "are you a real human?":"No I am a real program.",
-
-    "are you real human":"No I am a real program.",
-    "are you real human?":"No I am a real program.",
-
-    "are you a real person":"No I am a real program.",
-    "are you a real person?":"No I am a real program.",
-
-    "are you real person":"No I am a real program.",
-    "are you real person?":"No I am a real program.",
-
-    "are you a program":"Yes I am.",
-    "are you a program?":"Yes I am.",
-
-    "are you a robot":"Yes sort of.",
-    "are you a robot?":"Yes sort of.",
-    "are you robot":"Yes sort of.",
-    "are you robot?":"Yes sort of.",
-
-    "are you a bot":"Yes sort of.",
-    "are you a bot?":"Yes sort of.",
-    "are you bot":"Yes sort of.",
-    "are you bot?":"Yes sort of.",
-
-    "what can you do?": "I can answer some of your questions",
-    "what can you do": "I can answer some of your questions",
-    "what else can you do?": "I have some limitations therefore, i cannot do much :(",
-    "what else can you do": "I have some limitations therefore, i cannot do much :(",
-    "how are you":"I'm good thank you :)",
-    "how are you?":"I'm good thank you :)",
-}
-
-const chatGreetings = {
-    "hey":"Hey there! how can I help you?",
-    "hey there":"Hey there! how can I help you?",
-    "hello":"Hello how can I help you?",
-    "hello!":"Hello how can I help you?",
-    "greetings":"Greetings how can I help you?",
-    "greetings!":"Greetings how can I help you?",
-    "bye!":"Bye",
-    "bye":"Bye",
-    "goodbye!":"ByeBye",
-    "goodbye":"ByeBye",
-}
-
-const chatLaughs = {
-    "hehe":"hehehehehe",
-    "heheh":"hehehehehe",
-    "hehehe":"hehehehehe",
-    "hehehehe":"hehehehehe",
-    "haha":"hahahaha",
-    "hahah":"hahahaha",
-    "hahaha":"hahahaha",
-    "hahahaha":"hahahaha",
-}
-
-const chatConversations = {
-    "ok": "Great. Anything else I can do for you?",
-    "cool":"Thanks. Do you want to know anything else?",
-    "great":"Thanks. Anything else?",
-    "good":"Thanks. Anything else?",
-    "yes": "What would you like to know?",
-    "no": "Thanks. It was great talking to you.",
-    "sorry": "Don't be sorry. You are awesome.",
-    "thanks": "My pleasure.<br/> Anything else?",
-    "thank you": "Pleasure is always mine. <br/> Anything else?",
-    "wow": "I'm happy that you are amazed.",
-}
 function appendOptions (options){
     const form = document.querySelector(".message-wrap__replies");
     if(form){
@@ -474,75 +345,47 @@ function appendOptions (options){
         }
     }
 }
-function appendReply(reply,delay,message){
+
+let lastReply = "";
+
+function getReply(message){
     const messageWrap = document.querySelector(".message-wrap__messages");
     if(messageWrap){
+        // Showing Typing animation
         const typing = document.createElement("div");
         typing.className = "message-wrap__message typing";
         typing.innerHTML = "<div></div><div></div><div></div>"
         messageWrap.appendChild(typing);
         messageWrap.scrollTo({left:0, top:messageWrap.scrollHeight, behavior:"smooth" });
-        setTimeout(()=>{
-            messageWrap.lastChild.remove();
+
+        // Sending API request
+        const API = "http://localhost:5000/chat";
+        const payload = {
+            message,
+            lastReply,
+        }
+        const requestObj = {
+            method: 'POST',
+            mode: 'cors',
+            headers: {'Content-Type': 'application/json',},
+            body: JSON.stringify(payload),
+        }
+        fetch(API, requestObj).then(json=>json.json()).then(res=>{
+            // removeing typing animations if any exists
+            const typings = messageWrap.querySelectorAll(".message-wrap__message.typing");
+            if(typings.length){
+                typings.forEach(typing=>typing.remove());
+            }
             const messageNode = document.createElement("div");
             messageNode.className = "message-wrap__message";
-            messageNode.innerHTML = reply;
+            messageNode.innerHTML = res.reply;
             messageWrap.appendChild(messageNode);
             messageWrap.scrollTo({left:0, top:messageWrap.scrollHeight, behavior:"smooth" });
-
-            if(message){
-                const key = message.toLowerCase();
-                if(key === "yes"){
-                    appendOptions([ "Are you real?", "Are you a bot?", "What's your name?", "how can i contact you?", "Where to download your cv?" ])
-                }
-                else if(key === "no"){
-                    appendOptions()
-                }
-                else{
-                    if(chatConversations[key]){
-                        appendOptions([ "Yes", "No", "Ok", "Thanks" ]);
-                    }
-                    else if(chatGreetings[key]){
-                        appendOptions([ "Where to download your CV?", "What are your contact details?", "Where can i see your projects?", "How's the weather?" ]);
-                    }
-                    else if(chatQuestions[key]){
-                        appendOptions([ "Ok", "Thanks", "Great" ]);
-                    }
-                    else{
-                        appendOptions([ "Yes", "No" ]);
-                    }
-                }
-            }
-
-
-        }, delay || 1000)
+            appendOptions(res.suggestions);
+            lastReply = res.reply;
+        });
     }
 }
-function getReply(message){
-    const replies = {
-        ...chatQuestions,
-        ...chatGreetings,
-        ...chatLaughs,
-        ...chatConversations,
-    }
-    const reply = replies[message.toLowerCase()];
-    const messageWrap = document.querySelector(".message-wrap__messages");
-    if(messageWrap){
-        if(reply){
-            if(reply === lastReply && chatQuestions[message.toLowerCase()]){
-                appendReply("Hey haven't I just answered that?", 1000);
-            }
-            else{
-                lastReply = reply;
-                appendReply(reply, 1500, message);
-            }
-        }
-        else{
-            appendReply("Sorry I couldn't understand that. <br/> Do you want to ask anything else?", 1000, message);
-        }
-    }
-}
-
 function sendMessage(text){
     const messageWrap = document.querySelector(".message-wrap__messages");
     if(messageWrap){
@@ -554,7 +397,6 @@ function sendMessage(text){
         getReply(text);
     }
 }
-
 
 function sendMessageHandler(){
     const form = document.querySelector(".message-wrap__replies");

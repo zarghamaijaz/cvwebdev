@@ -1,3 +1,5 @@
+let isProjectsBroken = true; // Added this bit here to open the chat and show a message that project links are broken.
+
 function getOptions(){
     const options = JSON.parse(localStorage.getItem("options"));
     return options;
@@ -91,6 +93,8 @@ function skillsHelpFunctionality(){
 }skillsHelpFunctionality();
 
 
+
+// This function opens dropdown inside of the section when it is clicked for the first time.
 function openFirstExpandable(section){
     const expandables = section.querySelectorAll(".expandable");
     if(expandables.length){
@@ -112,6 +116,27 @@ function openFirstExpandable(section){
                     }
                 }
             })
+        }
+    }
+}
+
+
+// This function runs when user opens Projects section for the first time.
+function showProjectLinksMessage(section){
+    const isProjectSection = section.id === "projects" ? true : false;
+    if(isProjectSection){
+        if(isProjectsBroken){
+            toggleMessageExpand(true);
+            appendReply();
+            setTimeout(()=>{
+                appendReply("Hello");
+                appendReply();
+                setTimeout(()=>{
+                    appendReply("Some project links might be down because Heroku recently changed their free plan.<br/>Sorry for that. 😓");
+                    appendOptions(["Where can i see your projects?", "Ok"]);
+                },1500);
+            },500);
+            isProjectsBroken = false;
         }
     }
 }
@@ -157,6 +182,7 @@ function toggleNavigation(){
                         if(sectionToEnable){
                             closePreviousSections();
                             openFirstExpandable(sectionToEnable);
+                            showProjectLinksMessage(sectionToEnable);
                             sectionToEnable.style.display = "block";
                         }
                     }
@@ -323,6 +349,11 @@ function messageExpandHandler(){
 }messageExpandHandler();
 
 
+let lastReply = ""; // We need to send last API response to the API along with our message.
+let isGettingReply = false; // This is to prevent user from sending multiple messages until a response arrives.
+
+
+
 function appendOptions (options){
     const form = document.querySelector(".message-wrap__replies");
     if(form){
@@ -346,17 +377,40 @@ function appendOptions (options){
     }
 }
 
-let lastReply = "";
+function appendReply(message){
+    const messageWrap = document.querySelector(".message-wrap__messages");
+    if(messageWrap){
+        // If message is passed to the function then we will append the message otherwise, we will append typing animation
+        if(message){
+            // removeing typing animations if any exists
+            const typings = messageWrap.querySelectorAll(".message-wrap__message.typing");
+            if(typings.length){
+                typings.forEach(typing=>typing.remove());
+            }
+            // Appending message and scrolling to bottom
+            const messageNode = document.createElement("div");
+            messageNode.className = "message-wrap__message";
+            messageNode.innerHTML = message;
+            messageWrap.appendChild(messageNode);
+            messageWrap.scrollTo({left:0, top:messageWrap.scrollHeight, behavior:"smooth" });
+        }
+        else{
+             // Showing Typing animation
+            const typing = document.createElement("div");
+            typing.className = "message-wrap__message typing";
+            typing.innerHTML = "<div></div><div></div><div></div>"
+            messageWrap.appendChild(typing);
+            messageWrap.scrollTo({left:0, top:messageWrap.scrollHeight, behavior:"smooth" });
+        }
+    }
+}
+
 
 function getReply(message){
     const messageWrap = document.querySelector(".message-wrap__messages");
     if(messageWrap){
         // Showing Typing animation
-        const typing = document.createElement("div");
-        typing.className = "message-wrap__message typing";
-        typing.innerHTML = "<div></div><div></div><div></div>"
-        messageWrap.appendChild(typing);
-        messageWrap.scrollTo({left:0, top:messageWrap.scrollHeight, behavior:"smooth" });
+        appendReply();
 
         // Sending API request
         const API = "http://localhost:5000/chat";
@@ -370,31 +424,40 @@ function getReply(message){
             headers: {'Content-Type': 'application/json',},
             body: JSON.stringify(payload),
         }
+
+        isGettingReply = true;
+
         fetch(API, requestObj).then(json=>json.json()).then(res=>{
             // removeing typing animations if any exists
             const typings = messageWrap.querySelectorAll(".message-wrap__message.typing");
             if(typings.length){
                 typings.forEach(typing=>typing.remove());
             }
-            const messageNode = document.createElement("div");
-            messageNode.className = "message-wrap__message";
-            messageNode.innerHTML = res.reply;
-            messageWrap.appendChild(messageNode);
-            messageWrap.scrollTo({left:0, top:messageWrap.scrollHeight, behavior:"smooth" });
+            appendReply(res.reply);
             appendOptions(res.suggestions);
             lastReply = res.reply;
+            isGettingReply = false;
+        }).catch(err=>{
+            isGettingReply = false;
+            appendReply("I think we are having some network issues.<br/>Sorry for that. 😔");
+            appendOptions([]);
         });
     }
 }
 function sendMessage(text){
     const messageWrap = document.querySelector(".message-wrap__messages");
     if(messageWrap){
-        const messageNode = document.createElement("div");
-        messageNode.className = "message-wrap__message is-own";
-        messageNode.innerText = text;
-        messageWrap.appendChild(messageNode);
-        messageWrap.scrollTo({left:0, top:messageWrap.scrollHeight, behavior:"smooth" });
-        getReply(text);
+        if(isGettingReply){
+            toasterAlert("<div><i style='color:#ff2222' class='zmdi zmdi-alert-triangle'></i> Please wait for the reply</div>", 3000);
+        }
+        else{
+            const messageNode = document.createElement("div");
+            messageNode.className = "message-wrap__message is-own";
+            messageNode.innerText = text;
+            messageWrap.appendChild(messageNode);
+            messageWrap.scrollTo({left:0, top:messageWrap.scrollHeight, behavior:"smooth" });
+            getReply(text);
+        }
     }
 }
 
@@ -425,3 +488,32 @@ function sendMessageInputHandler(){
         }
     }
 }sendMessageInputHandler();
+
+
+function toasterAlert( HTML, timeout ){
+    const prevToasters = document.querySelectorAll(".toaster-wrap");
+    if(prevToasters.length){
+        prevToasters.forEach(toaster=>toaster.remove());
+    }
+
+    if(HTML){
+        const toasterWrap = document.createElement("div");
+        toasterWrap.className = "toaster-wrap";
+
+        const toasterNotification = document.createElement("div");
+        toasterNotification.className = "toaster-notification";
+
+        toasterNotification.innerHTML = HTML;
+        toasterWrap.appendChild(toasterNotification);
+        document.body.prepend(toasterWrap);
+
+        setTimeout(()=>{
+            document.body.querySelector(".toaster-wrap").classList.add("toaster--active");
+        })
+
+        timeout = setTimeout(()=>{
+            document.body.querySelector(".toaster-wrap").classList.remove("toaster--active");
+        },timeout || 5000);
+
+    }
+}

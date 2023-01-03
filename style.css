@@ -427,7 +427,7 @@ a.button{
     left: 0px;
     height: 100%;
     width: 100%;
-    background-color: var(--primary-color);
+    background: linear-gradient(90deg, var(--primary-color), var(--primary-color-light));
     transform: translateX(-101%);
     transition: transform 250ms;
 }
@@ -785,4 +785,44 @@ a.button{
     border-radius: 5px;
     padding: 0.5em;
     color: var(--text-color-mid);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.toaster-wrap{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    top: 50px;
+    left: 0px;
+    overflow: hidden;
+}
+.toaster-notification{
+    background-color: var(--black-color);
+    border: 1px solid var(--white-color);
+    color: var(--white-color);
+    padding: 1rem;
+    border-radius: 5px;
+    transition: 500ms;
+    opacity: o;
+    transform: translateY(-100%);
+}
+
+.toaster-wrap.toaster--active .toaster-notification{
+    opacity: 1;
+    transform: translateY(0%);
 }

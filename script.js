@@ -135,7 +135,7 @@ function showProjectLinksMessage(section){
                     appendReply("Some project links might be down because Heroku recently changed their free plan.<br/>Sorry for that. 😓");
                     appendOptions(["Where can i see your projects?", "Ok"]);
                 },1500);
-            },500);
+            },1500);
             isProjectsBroken = false;
         }
     }
@@ -413,7 +413,7 @@ function getReply(message){
         appendReply();
 
         // Sending API request
-        const API = "http://localhost:5000/chat";
+        const API = "https://heliotrope-brazen-cafe.glitch.me/chat" || "http://localhost:5000/chat";
         const payload = {
             message,
             lastReply,

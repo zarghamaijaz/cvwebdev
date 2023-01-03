@@ -413,7 +413,7 @@ function getReply(message){
         appendReply();
 
         // Sending API request
-        const API = "https://heliotrope-brazen-cafe.glitch.me/chat" || "http://localhost:5000/chat";
+        const API = "https://heliotrope-brazen-cafe.glitch.me/chat";
         const payload = {
             message,
             lastReply,

@@ -51,7 +51,7 @@
         height: 30vh;
     }
     .sender-wrap{
-        padding: 0.2rem 0.5rem;
+        padding: 0.5rem 0.5rem;
         font-size: 1rem;
     }
     .message-wrap__messages{
@@ -60,4 +60,28 @@
     .message-wrap__reply{
         font-size: 1rem;
     }
+    .sender-wrap:not(.button--active){
+        position: absolute;
+        bottom: 100%;
+        right: 0px;
+        background-color: var(--background-color);
+        width: auto;
+        box-shadow: 0px 0px 20px #0005;
+        border-radius: 50%;
+    }
+    .sender-wrap:not(.button--active) .sender-name,
+    .sender-wrap:not(.button--active) .dropdown-indicator{
+        display: none;
+    }
+    .sender-wrap:not(.button--active) .message-icon{
+        display: block;
+    }
+
+
+
+    .navigation-wrap-info-tip,
+    .skills-section-help{
+        font-size: 8px;
+    }
+    
 }

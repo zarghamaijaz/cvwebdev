@@ -358,7 +358,7 @@ a.button{
 }
 .navigation-wrap-info-tip{
     display: none;
-    font-size: 0.9rem;
+    font-size: 10px;
     letter-spacing: 1px;
     word-spacing: 0.1em;
     position: absolute;
@@ -469,7 +469,7 @@ a.button{
 }
 .expandable-button i{
     color: var(--text-color);
-    font-size: 1.65rem;
+    font-size: 1.25rem;
     transition: transform 225ms;
 }
 .expandable-button.button--active i{
@@ -485,7 +485,8 @@ a.button{
     z-index: 99;
     inset: 0px;
     display: none;
-    place-items: center;
+    justify-content: center;
+    align-items: flex-start;
     outline: 2px solid var(--primary-color);
     backdrop-filter: blur(2px);
     outline-offset: 5px;
@@ -620,9 +621,19 @@ a.button{
     background-color: transparent;
     border: none;
 }
+.sender-wrap .message-icon{
+    color: var(--text-color-mid);
+    position: absolute;
+    top: 0%;
+    left: 100%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    font-size: 20px;
+    display: none;
+}
 .sender-wrap .dropdown-indicator{
     margin-left: auto;
-    font-size: 1.5em;
+    /* font-size: 1.5em; */
     transition: transform 225ms;
 }
 .sender-wrap.button--active .dropdown-indicator{
@@ -804,6 +815,7 @@ a.button{
 
 .toaster-wrap{
     position: absolute;
+    z-index: 9999999;
     display: flex;
     justify-content: center;
     width: 100%;

@@ -628,7 +628,11 @@ a.button{
     left: 100%;
     transform: translate(-50%, -50%);
     z-index: 1;
-    font-size: 20px;
+    font-size: 18px;
+    padding: 5px;
+    border-radius: 50%;
+    background-color: var(--background-color);
+    box-shadow: 0px 0px 10px #0005;
     display: none;
 }
 .sender-wrap .dropdown-indicator{
@@ -663,6 +667,9 @@ a.button{
     border-radius: 5px;
     background-color: var(--primary-color);
     color: var(--text-color);
+}
+.message-wrap__message a{
+    color: var(--link-color);
 }
 .message-wrap__message.is-own{
     margin-left: auto;

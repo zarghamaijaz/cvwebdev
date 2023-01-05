@@ -439,7 +439,7 @@ function getReply(message){
             isGettingReply = false;
         }).catch(err=>{
             isGettingReply = false;
-            appendReply("I think we are having some network issues.<br/>Sorry for that. 😔");
+            appendReply("I think we are having some network issues.<br/><br/>How about you write an email to me?<br/>Email: <a href='mailto:zarghamaijaz45@gmail.com'>zarghamaijaz45@gmail.com</a>");
             appendOptions([]);
         });
     }
@@ -448,7 +448,7 @@ function sendMessage(text){
     const messageWrap = document.querySelector(".message-wrap__messages");
     if(messageWrap){
         if(isGettingReply){
-            toasterAlert("<div><i style='color:#ff2222' class='zmdi zmdi-alert-triangle'></i> Please wait for the reply</div>", 3000);
+            toasterAlert("<div><i style='color:#ff2222' class='fa fa-exclamation-triangle'></i> Please wait for the reply</div>", 3000);
         }
         else{
             const messageNode = document.createElement("div");
@@ -517,3 +517,20 @@ function toasterAlert( HTML, timeout ){
 
     }
 }
+
+function showRandomGreetMessage(){
+    const messages = [
+        "Hi!",
+        "Howdy!",
+        "!السلام عليكم",
+        "Hey how's it going.",
+        "Hey what's up.",
+        "Welcome soldier",
+        "Hey there fam!",
+        "An awesome person just landed here.",
+        "You are amazing",
+        "Thank you for your interest!",
+    ];
+    const number = Math.floor(Math.random()*messages.length);
+    toasterAlert(`<div style='text-align:center;'>${messages[number]} 😄</div>`);
+}showRandomGreetMessage();

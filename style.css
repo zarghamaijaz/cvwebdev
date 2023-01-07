@@ -294,6 +294,10 @@ a.button{
     font-weight: 300;
     letter-spacing: 0.25em;
 }
+.section{
+    word-break: break-word;
+    width: 100%;
+}
 .section-title{
     font-size: 1.5rem;
     font-weight: 400;
@@ -581,7 +585,7 @@ a.button{
     color: var(--link-color);
     display: block;
     margin: 0.5em 0px;
-    word-break: break-all;
+    word-break: break-word;
 }
 
 

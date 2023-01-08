@@ -9,10 +9,8 @@
     place-items: center;
     overflow-y: auto;
 
-    --modal-primary-color: #fa28bb;
-    --modal-primary-color-light: #ffc6ee;
+    --modal-primary-color: #ffa0d9;
     --modal-secondary-color: #2f82ff;
-    --modal-secondary-color-light: #2f82ff36;
 
 
     font-size: 1.2rem;

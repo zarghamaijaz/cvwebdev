@@ -523,15 +523,15 @@ function showRandomGreetMessage(){
     const messages = [
         "Hi!",
         "Howdy!",
+        "Hey there!",
         "!السلام عليكم",
         "Good to see you here.",
         "Hey how's it going.",
         "Hey what's up.",
         "Welcome!",
-        "Hey there fam!",
-        "An awesome person just landed here.",
-        "You are amazing",
+        "Welcome to my website.",
         "Thank you for your interest!",
+        "Thanks for visiting",
     ];
     const number = Math.floor(Math.random()*messages.length);
     toasterAlert(`<div style='text-align:center;'>${messages[number]} 😄</div>`);

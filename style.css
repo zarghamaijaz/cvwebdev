@@ -46,7 +46,7 @@
 .alert{
     background-color: #ffffff;
     color: var(--text-color-mid);
-    padding: 5px 10px;
+    padding: 10px 10px;
     border-radius: 5px;
     border: 1px solid var(--text-color-mid);
 }
@@ -571,7 +571,7 @@ a.button{
     font-size: 1rem;
     color: var(--text-color-mid);
     margin: 0px;
-    margin-top: 0.2rem;
+    margin-top: 1rem;
     text-align: justify;
 }
 .skill-list{

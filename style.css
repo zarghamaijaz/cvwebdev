@@ -16,6 +16,14 @@
     --primary-color:#ffc44e;
     --primary-color-light:#ffe3aa;
     --link-color: #227C9D;
+
+    --danger-color:#eb3636;
+    --warning-color:#cfa11e;
+    --success-color:#079707;
+    --danger-color-light:#ffd8d8;
+    --warning-color-light:#fff7d5;
+    --success-color-light:#ceffce;
+
     --font-heading:'Bebas Neue', cursive;
     --font-paragraph:'Montserrat', sans-serif;
     --font-handwritten:'Dancing Script', cursive;
@@ -33,6 +41,29 @@
     color: var(--text-color);
     position: relative;
     isolation: isolate;
+}
+
+.alert{
+    background-color: #ffffff;
+    color: var(--text-color-mid);
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid var(--text-color-mid);
+}
+.alert.danger{
+    background-color: var(--danger-color-light);
+    color: var(--danger-color);
+    border-color: var(--danger-color);
+}
+.alert.warning{
+    background-color: var(--warning-color-light);
+    color: var(--warning-color);
+    border-color: var(--warning-color);
+}
+.alert.success{
+    background-color: var(--success-color-light);
+    color: var(--success-color);
+    border-color: var(--success-color);
 }
 .body.dark-mode{
     --background-color:#252525;
@@ -456,6 +487,7 @@ a.button{
     overflow: hidden;
 }
 .expandable-button{
+    text-align: left;
     margin-top: 1rem;
     display: flex;
     justify-content: space-between;

@@ -72,7 +72,7 @@ particlesJS('particles-js',
         "detect_on": "window",
         "events": {
             "onhover": {
-            "enable": true,
+            "enable": window.innerWidth > 992 ? true : false,
             "mode": "repulse"
             },
             "onclick": {

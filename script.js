@@ -12,7 +12,8 @@ const InitialOptions = {
     isDarkMode: true,
     isHelpEnabled: true,
     isNoteEnabled: true,
-    isSkillSectionHelpEnabled:true
+    isSkillSectionHelpEnabled:true,
+    isShowModal: true,
 }
 
 const storedOptions = getOptions();

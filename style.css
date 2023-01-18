@@ -577,6 +577,7 @@ a.button{
     margin-bottom: 0px;
 }
 .link{
+    word-break: break-word;
     color: var(--link-color);
     display: block;
     margin: 0.5em 0px;

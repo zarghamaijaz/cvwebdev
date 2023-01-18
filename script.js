@@ -414,7 +414,7 @@ function getReply(message){
         appendReply();
 
         // Sending API request
-        const API = "https://heliotrope-brazen-cafe.glitch.me";
+        const API = "https://heliotrope-brazen-cafe.glitch.me/chat";
         const payload = {
             message,
             lastReply,

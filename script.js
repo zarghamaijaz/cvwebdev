@@ -12,7 +12,8 @@ const InitialOptions = {
     isDarkMode: true,
     isHelpEnabled: true,
     isNoteEnabled: true,
-    isSkillSectionHelpEnabled:true
+    isSkillSectionHelpEnabled:true,
+    isShowModal: true,
 }
 
 const storedOptions = getOptions();
@@ -135,7 +136,7 @@ function showProjectLinksMessage(section){
                     appendReply("Some project links might be down because Heroku recently changed their free plan.<br/>Sorry for that. 😓");
                     appendOptions(["Where can i see your projects?", "Ok"]);
                 },1500);
-            },500);
+            },1500);
             isProjectsBroken = false;
         }
     }
@@ -413,7 +414,7 @@ function getReply(message){
         appendReply();
 
         // Sending API request
-        const API = "http://localhost:5000/chat";
+        const API = "http://zarghamaijaz-001-site1.htempurl.com/chat";
         const payload = {
             message,
             lastReply,
@@ -439,7 +440,7 @@ function getReply(message){
             isGettingReply = false;
         }).catch(err=>{
             isGettingReply = false;
-            appendReply("I think we are having some network issues.<br/>Sorry for that. 😔");
+            appendReply("I think we are having some network issues.<br/><br/>How about you write an email to me?<br/>Email: <a href='mailto:zarghamaijaz45@gmail.com'>zarghamaijaz45@gmail.com</a>");
             appendOptions([]);
         });
     }
@@ -448,7 +449,7 @@ function sendMessage(text){
     const messageWrap = document.querySelector(".message-wrap__messages");
     if(messageWrap){
         if(isGettingReply){
-            toasterAlert("<div><i style='color:#ff2222' class='zmdi zmdi-alert-triangle'></i> Please wait for the reply</div>", 3000);
+            toasterAlert("<div><i style='color:#ff2222' class='fa fa-exclamation-triangle'></i> Please wait for the reply</div>", 3000);
         }
         else{
             const messageNode = document.createElement("div");
@@ -517,3 +518,21 @@ function toasterAlert( HTML, timeout ){
 
     }
 }
+
+function showRandomGreetMessage(){
+    const messages = [
+        "Hi!",
+        "Howdy!",
+        "Hey there!",
+        "!السلام عليكم",
+        "Good to see you here.",
+        "Hey how's it going.",
+        "Hey what's up.",
+        "Welcome!",
+        "Welcome to my website.",
+        "Thank you for your interest!",
+        "Thanks for visiting",
+    ];
+    const number = Math.floor(Math.random()*messages.length);
+    toasterAlert(`<div style='text-align:center;'>${messages[number]} 😄</div>`);
+}showRandomGreetMessage();

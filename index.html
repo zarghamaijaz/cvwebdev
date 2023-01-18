@@ -7,33 +7,64 @@
     <title>Document</title>
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script&family=Montserrat:ital,wght@0,300;0,500;1,300;1,500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./responsive-styles.css">
+    <link rel="stylesheet" href="./modal-styles.css">
     <script src="./script.js" defer></script>
+    <script src="./modal-script.js" defer></script>
+    <script src="./particles.min.js" defer></script>
+    <script src="./particles.script.js" defer></script>
+    <link rel="stylesheet" href="./particles.styles.css">
 </head>
 <body class="body dark-mode">
     <div class="body-overlay"></div>
-    <div class="toaster-wrap">
-        <div class="toaster-notification">Hey this is a toaster notification.</div>
+    <div id="particles-js"></div>
+
+    <div class="modal-wrap" id="welcome-modal">
+        <div class="modal-main">
+            <h1 class="modal-title">Hey there, welcome!</h1>
+            <div class="modal-screen">
+                <p class="alert warning">This website is made from scratch.</p>
+                <h2 class="modal-subtitle">No CSS framework, no JavaScript library for UI.</h2>
+                <p class="modal-desc">Everything including stying, functionality, micro-animations, etc. It is all custom written.</p>
+                <p class="modal-desc">Please take your time exploring the site. If you have any suggestions or questions, feel free to contact me.</p>
+                <h2 class="modal-subtitle">There's also a chatbot.</h2>
+                <p class="modal-desc">I have made a little chatbot that can do some basic conversation. Go ahead and try it. :)</p>
+            </div>
+
+
+            <form class="modal-buttons">
+                <div class="checkbox-wrap">
+                    <input type="checkbox" style="margin-right: 5px; height: 22px; width: 22px;" />
+                    <span>Don't show again</span>
+                </div>
+                <button class="modal-button">Ok</button>
+            </form>
+        </div>
     </div>
+
+    <!-- Commented toaster because the markup will added by JS -->
+    <!-- <div class="toaster-wrap">
+        <div class="toaster-notification">Hey this is a toaster notification.</div>
+    </div> -->
     <button class="sidebar-toggle-button">
-        <i class="zmdi zmdi-menu"></i>
+        <i class="fa fa-bars"></i>
     </button>
     <div class="body__background">
         <div class="body__background__stripe">
             <button class="sidebar-close-button">
-                <i class="zmdi zmdi-close"></i>
+                <i class="fa fa-times"></i>
             </button>
             <div class="body__background__stripe__text">
                 <div class="theme-switcher-wrap">
                     <button class="theme-switcher-button">
-                        <div class="theme-switcher-button-tooltip">Toggle theme</div>
+                        <div class="theme-switcher-button-tooltip">Change theme</div>
                     </button>
                 </div>
                 <h2 class="body__background__stripe__text_heading">ZARGHAM AIJAZ</h2>
                 <h3 class="body__background__stripe__text_subheading">FRONTEND DEVELOPER</h3>
-                <a href="mailto:zarghamaijaz45@gmail.com" class="button outlined"><i class="zmdi zmdi-email"></i>CONTACT ME</a>
+                <a href="mailto:zarghamaijaz45@gmail.com" class="button outlined"><i class="fa fa-email"></i>CONTACT ME</a>
                 <button class="reset-choices" title="Resets the page to its initial state">Reset my choices</button>
             </div>
         </div>
@@ -83,7 +114,7 @@
                 
                 <h3 class="section-title">SUMMARY</h3>
                 <p class="summary">
-                    I am a frontend web developer with more than two years of experience in building beautiful, fast, and scalable user interfaces. I keep up with the latest tools and technologies and implement best practices in the code. I possess the ability to transform any design (photoshop, figma etc) into good quality code. I make sure what i develop is responsive across multiple devices and compatible across multiple browsers.
+                    I am a front-end web developer with more than two years of experience in building beautiful, fast, and scalable user interfaces. I keep up with the latest tools and technologies and implement best practices in the code. I possess the ability to transform any design (photoshop, Figma, etc) into good-quality code. I make sure what I develop is responsive across multiple devices and compatible with multiple browsers.
                 </p>
                 <h3 class="section-title">Education</h3>
 
@@ -156,13 +187,13 @@
                 <div class="expandable-wrap">
                     <button class="expandable-button">
                         <h3 class="skill-title">HTML5</h3>
-                        <i class="zmdi zmdi-chevron-down"></i>
+                        <i class="fa fa-chevron-down"></i>
                     </button>
                     <div class="expandable">
                         <h4 class="subskill-title">Semantic tags</h4>
                         <p class="skill-description">I use semantic tags wherever possible so that users and search engine bots know what type of content they are seeing.</p>
                         <h4 class="subskill-title">Utility & modifier classes</h4>
-                        <p class="skill-description">I like making utility classes and modifier classes for similar markup and use them wherever needed. This allows me to write DRY code and prevents styles from bleeding outside of the scope.</p>
+                        <p class="skill-description">I like grouping similar styles in a class and use it wherever needed.</p>
                         <h4 class="subskill-title">Image/audio/video</h4>
                         <p class="skill-description">I have the ability to use multimedia elements on the page and display them according to the requirement.</p>
                     </div>
@@ -172,7 +203,7 @@
                 <div class="expandable-wrap">
                     <button class="expandable-button">
                         <h3 class="skill-title">CSS3</h3>
-                        <i class="zmdi zmdi-chevron-down"></i>
+                        <i class="fa fa-chevron-down"></i>
                     </button>
                     <div class="expandable">
 
@@ -180,28 +211,28 @@
                         <p class="skill-description">Excellent knowledge of selectors and their specificity.</p>
 
                         <h4 class="subskill-title">Layout (Flexbox / Grid)</h4>
-                        <p class="skill-description">I can make pixel perfect layouts using flexbox and grid. I know in depth difference between them and hence i know which on to use depending on the situation.</p>
+                        <p class="skill-description">I can make pixel perfect layouts using flexbox and grid.</p>
                         
                         <h4 class="subskill-title">Positioning</h4>
-                        <p class="skill-description">Great understanding of each position property (static, relative, absolute, fixed, sticky) and how to combine them to develop the design according to the requirement.</p>
+                        <p class="skill-description">Great understanding of position properties and how to combine them to develop the design according to the requirement.</p>
                         
-                        <h4 class="subskill-title">Media queries (Responsiveness)</h4>
-                        <p class="skill-description">I use media queries to define styles for a specific breakpoint. I like separating media queries in a different file (usually named responsive.css) that way I know that these styles are for a different device.</p>
+                        <h4 class="subskill-title">Media queries / Responsiveness</h4>
+                        <p class="skill-description">I define styles for different screens using media queries.</p>
 
                         <h4 class="subskill-title">Transitions & animations</h4>
                         <p class="skill-description">I can add smooth and performance friendly animations to ensure better user experience.</p>
 
                         <h4 class="subskill-title">Typography</h4>
-                        <p class="skill-description">I have great knowledge of text properties like letter-spacing, line-height, font-size, whitespace, just to name a few.</p>
+                        <p class="skill-description">I take care of styling the text in such a way that it is easy to read for everyone.</p>
 
                         <h4 class="subskill-title">CSS Units</h4>
-                        <p class="skill-description">As a UI/UX developer, i know exactly when and which unit is a good fit. Using the right unit always prevents unexpected behavior.</p>
+                        <p class="skill-description">I know differences between absolute and relative units and when and which is a good fit.</p>
                         
                         <h4 class="subskill-title">Pseudo classes & pseudo elements</h4>
-                        <p class="skill-description">I can take advantage of CSS's built in pseudo elements instead of having to add unnecessary markup.</p>
+                        <p class="skill-description">I leverage CSS's built-in pseudo elements wherever needed.</p>
 
                         <h4 class="subskill-title">Frameworks and libraries</h4>
-                        <p class="skill-description">I have experience in the following:</p>
+                        <p class="skill-description">I have working experience with the following:</p>
                         <ul class="skill-list">
                             <li>Bootstrap</li>
                             <li>Bulma</li>
@@ -216,11 +247,10 @@
                 <div class="expandable-wrap">
                     <button class="expandable-button">
                         <h3 class="skill-title">SAAS / SCSS</h3>
-                        <i class="zmdi zmdi-chevron-down"></i>
+                        <i class="fa fa-chevron-down"></i>
                     </button>
                     <div class="expandable">
-                        <p class="skill-description">Both SAAS and SCSS are pretty much the same the only difference is that SCSS follows CSS like syntax therefore I personally prefer using it over SAAS.</p>
-                        <p class="skill-description">I have worked on the following in SCSS:</p>
+                        <p class="skill-description">I have working experience with the following principles in SCSS:</p>
                         <ul class="skill-list">
                             <li>Nesting</li>
                             <li>Variables</li>
@@ -234,7 +264,7 @@
                 <div class="expandable-wrap">
                     <button class="expandable-button">
                         <h3 class="skill-title">JavaScript</h3>
-                        <i class="zmdi zmdi-chevron-down"></i>
+                        <i class="fa fa-chevron-down"></i>
                     </button>
                     <div class="expandable">
                         <h4 class="subskill-title">Basics</h4>
@@ -245,12 +275,14 @@
                             <li>Arrays</li>
                             <li>JSON</li>
                             <li>Functions</li>
+                            <li>Functional programming</li>
                             <li>Higher order functions</li>
                             <li>Arrow functions</li>
-                            <li>This keyword & its binding</li>
+                            <li>This keyword</li>
                             <li>Scoping</li>
                             <li>DOM maipulation</li>
                             <li>Event handling</li>
+                            <li>Local storage, Session storage & Cookies</li>
                         </ul>
                         <h4 class="subskill-title">Advanced</h4>
                         <p class="skill-description">I aslo have a clear understanding of the following concepts:</p>
@@ -262,9 +294,8 @@
                             <li>Closures</li>
                             <li>Currying</li>
                             <li>Hoisting</li>
-                            <li>Reference vs value</li>
-                            <li>Shallow copy vs deep copy</li>
-                            <li>Local storage, Session storage & Cookies</li>
+                            <li>Reference & value</li>
+                            <li>Shallow copy & deep copy</li>
                         </ul>
                     </div>
                 </div>
@@ -273,27 +304,19 @@
                 <div class="expandable-wrap">
                     <button class="expandable-button">
                         <h3 class="skill-title">React</h3>
-                        <i class="zmdi zmdi-chevron-down"></i>
+                        <i class="fa fa-chevron-down"></i>
                     </button>
                     <div class="expandable">
-                        <h4 class="subskill-title">State management</h4>
-                        <p class="skill-description">I can decide how the application's state should be managed and where should  it live.</p>
-                        <h4 class="subskill-title">Functional components</h4>
-                        <p class="skill-description">I like using functional components and pairing them with the hooks for managing the application state, doing API calls, etc.</p>
-                        <h4 class="subskill-title">Hooks</h4>
-                        <p class="skill-description">I have worked with the following hooks:</p>
+                        <p class="skill-description">I've worked on the following in React:</p>
                         <ul class="skill-list">
-                            <li>useState</li>
-                            <li>useEffect</li>
-                            <li>useRef</li>
-                            <li>useSelector</li>
+                            <li>State management</li>
+                            <li>Functional components</li>
+                            <li>Hooks</li>
+                            <li>Class components</li>
+                            <li>Lifecycle methods</li>
+                            <li>Event handling</li>
+                            <li>Styled components</li>
                         </ul>
-                        <h4 class="subskill-title">Class components</h4>
-                        <p class="skill-description">Although class components are old and officially deprecated, some older apps are still using them hence I am comfortable working with class components as well.</p>
-                        <h4 class="subskill-title">Lifecycle methods</h4>
-                        <p class="skill-description">When working in class components, I use lifecycly methods to manage application's state, API calls, etc.</p>
-                        <h4 class="subskill-title">Styled components</h4>
-                        <p class="skill-description">I have experience working with styled components to obtain scoped styling in CSS.</p>
                     </div>
                 </div>
 
@@ -301,15 +324,15 @@
                 <div class="expandable-wrap">
                     <button class="expandable-button">
                         <h3 class="skill-title">Redux</h3>
-                        <i class="zmdi zmdi-chevron-down"></i>
+                        <i class="fa fa-chevron-down"></i>
                     </button>
                     <div class="expandable">
-                        <h4 class="subskill-title">Redux persist</h4>
-                        <p class="skill-description">I have used redux persist to save application's state to local storage so whenever page reloads, the application state is preserved.</p>
-                        <h4 class="subskill-title">Redux reselect</h4>
-                        <p class="skill-description">I have used reselect to optimize react application and prevent unnecessary renders in a component whenever an action gets fired that is not related to that component.</p>
-                        <h4 class="subskill-title">Redux saga</h4>
-                        <p class="skill-description">I have used redux sage to obtain asynchronous behavior from redux.</p>
+                        <p class="skill-description">I have worked on Redux along with the following libraries:</p>
+                        <ul class="skill-list">
+                            <li>Redux persist</li>
+                            <li>Redux reselect</li>
+                            <li>Redux saga</li>
+                        </ul>
                     </div>
                 </div>
 
@@ -317,7 +340,7 @@
                 <div class="expandable-wrap">
                     <button class="expandable-button">
                         <h3 class="skill-title">GIT</h3>
-                        <i class="zmdi zmdi-chevron-down"></i>
+                        <i class="fa fa-chevron-down"></i>
                     </button>
                     <div class="expandable">
                         <h4 class="subskill-title">Version control</h4>
@@ -331,7 +354,7 @@
                 <div class="expandable-wrap">
                     <button class="expandable-button">
                         <h3 class="skill-title">Firebase</h3>
-                        <i class="zmdi zmdi-chevron-down"></i>
+                        <i class="fa fa-chevron-down"></i>
                     </button>
                     <div class="expandable">
                         <h4 class="subskill-title">Auth</h4>
@@ -366,13 +389,13 @@
                 <div class="expandable-wrap">
                     <button class="expandable-button">
                         <h3 class="skill-title">Design skills</h3>
-                        <i class="zmdi zmdi-chevron-down"></i>
+                        <i class="fa fa-chevron-down"></i>
                     </button>
                     <div class="expandable">
                         <h4 class="subskill-title">Custom theme development</h4>
                         <p class="skill-description">I have experience making custom themes for web. I use variables for colors, fonts and other properties so they can be changed and customized with ease</p>
                         <h4 class="subskill-title">Attention to detail</h4>
-                        <p class="skill-description">I pay attention to the following things to make sure most people can benefit from the product/service:</p>
+                        <p class="skill-description">I pay attention to the following things and make sure that most people can benefit from the product/service:</p>
                         <ul class="skill-list">
                             <li>Responsiveness</li>
                             <li>accessibility</li>
@@ -390,7 +413,7 @@
                 <div class="expandable-wrap">
                     <button class="expandable-button">
                         <h3 class="skill-title">Organizational skills</h3>
-                        <i class="zmdi zmdi-chevron-down"></i>
+                        <i class="fa fa-chevron-down"></i>
                     </button>
                     <div class="expandable">
                         <p class="skill-description">I like working efficiently and take care of the following principles:</p>
@@ -410,7 +433,8 @@
                 <h4 class="title">Frontend React developer</h4>
                 <span class="subtitle">VaporVM | 2022 to present</span>
                 <a href="https://vaporvm.com/" class="link">https://vaporvm.com/</a>
-                <p class="desc">I have been working on many new and exciting things in this company. Some of the main things include:</p>
+                <p class="desc">I am working on a product here which is built with React. I design and develop User Interfaces for the application and I help in integrating the Front-end with the Back-end APIs.</p>
+                <p class="desc">Below are some interesting things that I am working on:</p>
                 <ul class="list">
                     <li>Opentok.js</li>
                     <li>Redux</li>
@@ -420,9 +444,12 @@
                 <h4 class="title">Frontend developer</h4>
                 <span class="subtitle">US packaging solutions | 2021 to 2022</span>
                 <a href="https://www.linkedin.com/company/us-packaging-solution/" class="link">https://www.linkedin.com/company/us-packaging-solution/</a>
-                <p class="desc">I have enjoyed working here as a frontend developer. The company has helped me buid strong frontend concepts.</p>
-                <p class="desc">Key things i have learnt from here are:</p>
+                <p class="desc">I have enjoyed working here as a frontend developer. I have helped the company build, style and optimize their websites.</p>
+                <p class="desc">I worked on the following things:</p>
                 <ul class="list">
+                    <li>Wordpress</li>
+                    <li>Elementor</li>
+                    <li>WooCommerce</li>
                     <li>Custom theme development</li>
                     <li>Pseudo elements</li>
                     <li>DOM manipulation</li>
@@ -433,8 +460,8 @@
                 <h3 class="section-title">Portfolio Projects</h3>
 
                 <h4 class="title">Ecommerce clothing</h4>
-                <a href="https://smartbrain-zargham.herokuapp.com/" target="_blank" class="link">https://smartbrain-zargham.herokuapp.com/</a>
-                <p class="desc">I have been working on many new and exciting things in this company. Some of the main things include:</p>
+                <a href="https://zarghamaijaz.github.io/crwn-clothing/" target="_blank" class="link">https://zarghamaijaz.github.io/crwn-clothing/</a>
+                <p class="desc">This is an ecommerce store built with React.js. The project is complete however, I am doing some further optimizations and I keep deploying them here.</p>
                 <p class="desc">Learnings:</p>
                 <ul class="list">
                     <li>React hooks</li>
@@ -448,33 +475,39 @@
                     <li>Stripe integration</li>
                 </ul>
 
-                <h4 class="title">Smart brain (Frontend)</h4>
-                <!-- <span class="subtitle">VaporVM | 2022 to present</span> -->
+                <h4 class="title">Smart brain</h4>
                 <a href="https://smartbrain-zargham.herokuapp.com/" target="_blank" class="link">https://smartbrain-zargham.herokuapp.com/</a>
-                <p class="desc">I have been working on many new and exciting things in this company. Some of the main things include:</p>
+                <p class="desc">This is an app which detects faces in a picture that you submit to it. The user can also sign-in or register to the application.</p>
+                <p class="desc">There is a backend server built with Express.js and PostgreSql that is used to store user information.</p>
+                <p class="desc">The app also uses an API from Clarafai.com to detect faces in the pictures.</p>
+                <p class="desc">Learnings:</p>
                 <ul class="list">
-                    <li>Opentok.js</li>
-                    <li>Redux</li>
-                    <li>Stripe</li>
+                    <li>React.js</li>
+                    <li>Node.js/Express.js</li>
+                    <li>PostgreSql</li>
+                    <li>User authentication</li>
+                    <li>Database transactions</li>
+                    <li>Clarafai</li>
                 </ul>
 
                 <h4 class="title">Book finder</h4>
-                <!-- <span class="subtitle">VaporVM | 2022 to present</span> -->
                 <a href="https://book-finder-zargham.herokuapp.com/" target="_blank" class="link">https://book-finder-zargham.herokuapp.com//</a>
-                <p class="desc">I have been working on many new and exciting things in this company. Some of the main things include:</p>
+                <p class="desc">This is an app that communicates with an API from Openlibrary.org and fetches some book names based of search query.</p>
+                <p class="desc">The key feature of this app is the infinite scrolling. When the user srolls to the 100th result, the app sends another request to the server and fetches another 100 books (if there are any) and appends them to existing books.</p>
                 <ul class="list">
-                    <li>Opentok.js</li>
-                    <li>Redux</li>
-                    <li>Stripe</li>
+                    <li>React hooks</li>
+                    <li>Intersection observer</li>
+                    <li>Infinite scrolling</li>
                 </ul>
             </section>
         </div>
     </main>
     <div class="message-wrap">
-        <button class="sender-wrap button--active">
+        <button class="sender-wrap">
             <img src="./assets/images/zargham.webp" class="sender-image" alt="">
             <span class="sender-name">Zargham Aijaz</span>
-            <i class="zmdi zmdi-chevron-up dropdown-indicator"></i>
+            <i class="fa fa-comment message-icon"></i>
+            <i class="fa fa-chevron-up dropdown-indicator"></i>
         </button>
         <div class="message-expandable">
             <div class="message-wrap__messages">

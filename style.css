@@ -16,6 +16,14 @@
     --primary-color:#ffc44e;
     --primary-color-light:#ffe3aa;
     --link-color: #227C9D;
+
+    --danger-color:#eb3636;
+    --warning-color:#cfa11e;
+    --success-color:#079707;
+    --danger-color-light:#ffd8d8;
+    --warning-color-light:#fff7d5;
+    --success-color-light:#ceffce;
+
     --font-heading:'Bebas Neue', cursive;
     --font-paragraph:'Montserrat', sans-serif;
     --font-handwritten:'Dancing Script', cursive;
@@ -33,6 +41,29 @@
     color: var(--text-color);
     position: relative;
     isolation: isolate;
+}
+
+.alert{
+    background-color: #ffffff;
+    color: var(--text-color-mid);
+    padding: 10px 10px;
+    border-radius: 5px;
+    border: 1px solid var(--text-color-mid);
+}
+.alert.danger{
+    background-color: var(--danger-color-light);
+    color: var(--danger-color);
+    border-color: var(--danger-color);
+}
+.alert.warning{
+    background-color: var(--warning-color-light);
+    color: var(--warning-color);
+    border-color: var(--warning-color);
+}
+.alert.success{
+    background-color: var(--success-color-light);
+    color: var(--success-color);
+    border-color: var(--success-color);
 }
 .body.dark-mode{
     --background-color:#252525;
@@ -294,6 +325,10 @@ a.button{
     font-weight: 300;
     letter-spacing: 0.25em;
 }
+.section{
+    word-break: break-word;
+    width: 100%;
+}
 .section-title{
     font-size: 1.5rem;
     font-weight: 400;
@@ -358,7 +393,7 @@ a.button{
 }
 .navigation-wrap-info-tip{
     display: none;
-    font-size: 0.9rem;
+    font-size: 10px;
     letter-spacing: 1px;
     word-spacing: 0.1em;
     position: absolute;
@@ -452,6 +487,7 @@ a.button{
     overflow: hidden;
 }
 .expandable-button{
+    text-align: left;
     margin-top: 1rem;
     display: flex;
     justify-content: space-between;
@@ -469,7 +505,7 @@ a.button{
 }
 .expandable-button i{
     color: var(--text-color);
-    font-size: 1.65rem;
+    font-size: 1.25rem;
     transition: transform 225ms;
 }
 .expandable-button.button--active i{
@@ -485,7 +521,8 @@ a.button{
     z-index: 99;
     inset: 0px;
     display: none;
-    place-items: center;
+    justify-content: center;
+    align-items: flex-start;
     outline: 2px solid var(--primary-color);
     backdrop-filter: blur(2px);
     outline-offset: 5px;
@@ -534,7 +571,7 @@ a.button{
     font-size: 1rem;
     color: var(--text-color-mid);
     margin: 0px;
-    margin-top: 0.2rem;
+    margin-top: 1rem;
     text-align: justify;
 }
 .skill-list{
@@ -581,6 +618,7 @@ a.button{
     color: var(--link-color);
     display: block;
     margin: 0.5em 0px;
+    word-break: break-word;
 }
 
 
@@ -621,9 +659,23 @@ a.button{
     background-color: transparent;
     border: none;
 }
+.sender-wrap .message-icon{
+    color: var(--text-color-mid);
+    position: absolute;
+    top: 0%;
+    left: 100%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    font-size: 18px;
+    padding: 5px;
+    border-radius: 50%;
+    background-color: var(--background-color);
+    box-shadow: 0px 0px 10px #0005;
+    display: none;
+}
 .sender-wrap .dropdown-indicator{
     margin-left: auto;
-    font-size: 1.5em;
+    /* font-size: 1.5em; */
     transition: transform 225ms;
 }
 .sender-wrap.button--active .dropdown-indicator{
@@ -653,6 +705,9 @@ a.button{
     border-radius: 5px;
     background-color: var(--primary-color);
     color: var(--text-color);
+}
+.message-wrap__message a{
+    color: var(--link-color);
 }
 .message-wrap__message.is-own{
     margin-left: auto;
@@ -805,6 +860,7 @@ a.button{
 
 .toaster-wrap{
     position: absolute;
+    z-index: 9999999;
     display: flex;
     justify-content: center;
     width: 100%;

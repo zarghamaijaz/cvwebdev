@@ -225,7 +225,7 @@ a.button{
 .button{
     border-radius: 3px;
     padding: 0.5em 1em;
-    margin-block: 0.5em;
+    margin: 0.5em;
     font-size: 14px;
     background-color: var(--background-color);
     color: var(--black-color);

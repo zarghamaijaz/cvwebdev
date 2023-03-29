@@ -15,6 +15,7 @@
     <script src="./modal-script.js" defer></script>
     <script src="./particles.min.js" defer></script>
     <script src="./particles.script.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="./particles.styles.css">
 </head>
 <body class="body dark-mode">
@@ -43,7 +44,12 @@
             </form>
         </div>
     </div>
-
+    <embed style="display: none;"
+    type="application/pdf"
+    src="CV.pdf"
+    id="pdfDocument"
+    width="100%"
+    height="100%" />
     <!-- Commented toaster because the markup will added by JS -->
     <!-- <div class="toaster-wrap">
         <div class="toaster-notification">Hey this is a toaster notification.</div>
@@ -65,7 +71,7 @@
                 <h2 class="body__background__stripe__text_heading">ZARGHAM AIJAZ</h2>
                 <h3 class="body__background__stripe__text_subheading">FRONTEND DEVELOPER</h3>
                 <a href="mailto:zarghamaijaz45@gmail.com" class="button outlined"><i class="fa fa-envelope"></i>CONTACT ME</a>
-                <a href="https://drive.google.com/file/d/1_cIVDd-FWgWrqawrdIydpReQI6deC1ZC/view?usp=sharing" class="button outlined" target="_blank"><i class="fa fa-download"></i>Download CV</a>
+                <a class="button outlined" id="cv-download-button"><i class="fa fa-download"></i>Download CV</a>
                 <button class="reset-choices" title="Resets the page to its initial state">Reset my choices</button>
             </div>
         </div>

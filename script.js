@@ -548,7 +548,7 @@ function fillPrintInfo(){
     const _html = document.createElement("html");
     const head = document.createElement("head");
     const body = document.createElement("body");
-    body.className = "body dark-mode";
+    body.className = `body ${getOptions().isDarkMode ? "dark-mode" : "" }`;
 
     head.appendChild(stylesheet1);
     head.appendChild(stylesheet2);
@@ -566,9 +566,11 @@ function fillPrintInfo(){
 
     const printLeft = document.createElement("div");
     printLeft.className = "print-cv-left";
+    
+    
     const printRight = document.createElement("div");
     printRight.className = "print-cv-right";
-
+    
     const leftSide = document.createElement("div");
     leftSide.className = "navigation-wrap";
     const rightSide = document.createElement("div");
@@ -576,6 +578,13 @@ function fillPrintInfo(){
     
     const main = document.querySelector(".main");
     if(main){
+        const imageSection = document.querySelector(".user-image-wrap").cloneNode(true);
+        leftSide.appendChild(imageSection);
+        const usernameSection = document.querySelector(".username-wrap").cloneNode(true);
+        rightSide.appendChild(usernameSection);
+        const designitionSection = document.querySelector(".body__background__stripe__text_subheading").cloneNode(true);
+        designitionSection.style.marginBottom = "2.5rem";
+        rightSide.appendChild(designitionSection);
         const sections = main.querySelectorAll("section");
         if(sections.length){
             sections.forEach((section,i)=>{

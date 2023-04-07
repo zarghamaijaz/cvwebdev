@@ -223,6 +223,7 @@ a.button{
     text-decoration: none;
 }
 .button{
+    cursor: pointer;
     border-radius: 3px;
     padding: 0.5em 1em;
     margin: 0.5em;
